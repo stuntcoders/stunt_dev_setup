@@ -32,6 +32,7 @@ cask 'flux'
 
 # Apps
 cask 'gimp'
+cask 'skitch'
 cask 'sequel-pro'
 cask 'libreoffice'
 cask 'skype'
