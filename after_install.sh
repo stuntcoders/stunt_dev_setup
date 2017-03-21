@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dockutil --remove 'System Preferences' --allhomes
+dockutil --remove 'Launchpad' --allhomes
 dockutil --remove 'Siri' --allhomes
 dockutil --remove 'Safari' --allhomes
 dockutil --remove 'Mail' --allhomes
@@ -13,3 +13,4 @@ dockutil --remove 'FaceTime' --allhomes
 dockutil --remove 'iTunes' --allhomes
 dockutil --remove 'iBooks' --allhomes
 dockutil --remove 'App Store' --allhomes
+dockutil --remove 'System Preferences' --allhomes
