@@ -15,7 +15,7 @@ dockutil --remove 'iBooks' --allhomes
 dockutil --remove 'App Store' --allhomes
 dockutil --remove 'System Preferences' --allhomes
 
-dockutil --add '/Applications/iTerm.app' --position 2 --allhomes
-dockutil --add '/Applications/Google Chrome.app'/ --position 3 --allhomes
-dockutil --add '/Applications/PhpStorm.app' --position 4 --allhomes
-dockutil --add '/Applications/Sublime Text.app'/ --position 5 --allhomes
+dockutil --add '/Applications/Google Chrome.app'/ --position 2 --allhomes
+dockutil --add '/Applications/PhpStorm.app' --position 3 --allhomes
+dockutil --add '/Applications/Sublime Text.app'/ --position 4 --allhomes
+dockutil --add '/Applications/iTerm.app' --position 5 --allhomes
