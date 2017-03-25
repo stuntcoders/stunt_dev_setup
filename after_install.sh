@@ -17,6 +17,7 @@ dockutil --remove 'App Store' --allhomes
 dockutil --remove 'System Preferences' --allhomes
 dockutil --remove 'Keynote' --allhomes
 dockutil --remove 'Pages' --allhomes
+dockutil --remove 'Numbers' --allhomes
 
 # Add apps to Dock
 dockutil --add '/Applications/Google Chrome.app'/ --position 2 --allhomes
