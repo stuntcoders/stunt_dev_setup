@@ -28,7 +28,6 @@ cask 'firefox'
 # Utility
 cask 'iterm2'
 cask 'the-unarchiver'
-cask 'flux'
 
 # Apps
 cask 'gimp'
