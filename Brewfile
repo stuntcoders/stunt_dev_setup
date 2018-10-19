@@ -35,10 +35,9 @@ cask 'skitch'
 cask 'sequel-pro'
 cask 'libreoffice'
 cask 'skype'
-cask 'slack'
-cask 'github-desktop'
+cask 'mattermost'
 
 # IDEs
 cask 'phpstorm'
 cask 'sublime-text'
-cask 'atom'
+cask 'visual-studio-code'
