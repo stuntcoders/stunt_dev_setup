@@ -37,3 +37,6 @@ sed -i '' -e 's/skwp/agnoster/g' ~/.yadr/zsh/theme.zsh
 # Install theme
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+
+# Add aliases
+echo "alias cat='bat'" >> ~/.zshrc
