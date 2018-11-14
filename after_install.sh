@@ -39,7 +39,7 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
 # Add aliases
-cat <<EOT >> ~/.yadr/zsh/aliases.txt
+cat <<EOT >> ~/.yadr/zsh/aliases.zsh
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
 
