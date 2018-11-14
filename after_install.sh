@@ -39,4 +39,19 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
 # Add aliases
-echo "alias cat='bat'" >> ~/.zshrc
+cat <<EOT >> ~/.yadr/zsh/aliases.txt
+# Homebrew
+alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
+
+# Vagento
+alias vup='vagrant up'
+alias vd='vagrant suspend'
+alias vssh='vagrant ssh'
+
+# Fabric
+alias fsd='fab staging deploy'
+alias fpd='fab production deploy'
+
+# Misc
+alias cat='bat'
+EOT
