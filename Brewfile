@@ -32,7 +32,7 @@ cask 'the-unarchiver'
 # Apps
 cask 'gimp'
 cask 'skitch'
-cask 'sequel-pro'
+cask 'tableplus'
 cask 'libreoffice'
 cask 'skype'
 cask 'mattermost'
