@@ -38,6 +38,5 @@ cask 'skype'
 cask 'mattermost'
 
 # IDEs
-cask 'phpstorm'
 cask 'sublime-text'
 cask 'visual-studio-code'
