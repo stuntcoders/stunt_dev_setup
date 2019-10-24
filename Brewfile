@@ -19,6 +19,7 @@ brew 'zsh'
 brew 'the_silver_searcher'
 brew 'dockutil'
 brew 'bat'
+brew 'exa'
 
 # Basics
 cask 'virtualbox'
