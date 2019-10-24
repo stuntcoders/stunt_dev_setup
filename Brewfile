@@ -18,6 +18,7 @@ brew 'rbenv'
 brew 'zsh'
 brew 'the_silver_searcher'
 brew 'dockutil'
+brew 'bat'
 
 # Basics
 cask 'virtualbox'
