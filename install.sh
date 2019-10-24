@@ -66,6 +66,7 @@ alias vssh='vagrant ssh'
 alias fsd='fab staging deploy'
 alias fpd='fab production deploy'
 
-# Misc
+# Terminal
 alias cat='bat'
+alias l='exa --long --header -g -a --classify'
 EOT
