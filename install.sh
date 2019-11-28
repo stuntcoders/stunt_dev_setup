@@ -70,3 +70,8 @@ alias fpd='fab production deploy'
 alias cat='bat'
 alias l='exa --long --header -g -a --classify'
 EOT
+
+# Local files, folders and scripts setup
+mkdir ~/Sites/
+sudo easy_install pip
+pip install -Iv fabric==1.14.1
