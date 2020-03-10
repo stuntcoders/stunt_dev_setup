@@ -50,10 +50,10 @@ sed -i '' -e 's/skwp/agnoster/g' ~/.yadr/zsh/theme.zsh
 
 # Install theme
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+sed -i '' -e 's/ZSH_THEME="robbyrussel"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
 # Add aliases
-cat <<EOT >> ~/.yadr/zsh/aliases.zsh
+cat <<EOT >> ~/.zshrc
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
 
@@ -70,6 +70,10 @@ alias fpd='fab production deploy'
 alias cat='bat'
 alias l='exa --long --header -g -a --classify'
 EOT
+
+# Fix zsh Insecure completion-dependent directories issues
+chmod 755 /usr/local/share/zsh
+chmod 755 /usr/local/share/zsh/site-functions
 
 # Local files, folders and scripts setup
 mkdir ~/Sites/
