@@ -27,6 +27,8 @@ dockutil --remove 'System Preferences' --allhomes
 dockutil --remove 'Keynote' --allhomes
 dockutil --remove 'Pages' --allhomes
 dockutil --remove 'Numbers' --allhomes
+dockutil --remove 'Podcasts' --allhomes
+dockutil --remove 'TV' --allhomes
 
 # Add apps to Dock
 dockutil --add '/Applications/Mattermost.app' --position 1 --allhomes
