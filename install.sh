@@ -54,6 +54,10 @@ sed -i '' -e 's/skwp/agnoster/g' ~/.yadr/zsh/theme.zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sed -i '' -e 's/ZSH_THEME="robbyrussel"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
+# Fix zsh security issues
+chmod 755 /usr/local/share/zsh
+chmod 755 /usr/local/share/zsh/site-functions
+
 # Add aliases
 cat <<EOT >> ~/.zshrc
 # Homebrew
