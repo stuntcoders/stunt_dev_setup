@@ -63,10 +63,14 @@ cat <<EOT >> ~/.zshrc
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
 
-# Vagento
+# Vagrant
 alias vup='vagrant up'
 alias vd='vagrant suspend'
 alias vssh='vagrant ssh'
+
+# Install Vagrant plugins
+vagrant plugin install vagrant-cachier
+vagrant plugin install vagrant-faster
 
 # Fabric
 alias fsd='fab staging deploy'
@@ -85,3 +89,11 @@ chmod 755 /usr/local/share/zsh/site-functions
 mkdir ~/Sites/
 sudo easy_install pip
 pip install -Iv fabric==1.14.1
+
+# Rbenv
+brew install rbenv
+rbenv install 2.7.1
+rbenv global 2.7.1
+
+# Install Capistrano
+gem install capistrano
