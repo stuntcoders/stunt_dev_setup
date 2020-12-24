@@ -35,8 +35,10 @@ cask 'gimp'
 cask 'skitch'
 cask 'tableplus'
 cask 'libreoffice'
-cask 'skype'
 cask 'mattermost'
+
+# Fonts
+cask 'font-source-code-pro'
 
 # IDEs
 cask 'sublime-text'
