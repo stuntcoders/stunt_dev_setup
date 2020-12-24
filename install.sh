@@ -41,10 +41,6 @@ dockutil --add '/Applications/iTerm.app' --position 5 --allhomes
 npm install --global grunt-cli
 sudo gem install sass
 
-# Install powerline fonts
-brew tap homebrew/cask-fonts
-brew cask install font-source-code-pro
-
 # Install yadr
 sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/install.sh`"
 cd ~/.yadr/ && rake update
