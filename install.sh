@@ -64,6 +64,22 @@ alias vup='vagrant up'
 alias vd='vagrant suspend'
 alias vssh='vagrant ssh'
 
+
+# Docker
+alias docker-compose="docker compose"
+alias dcb="docker-compose build"
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias dcl="docker-compose exec --user $(id -u):$(id -g) web /bin/bash"
+alias dcdebug="docker-compose down && docker-compose run --service-ports we>
+alias dclc="dockerlogin"
+dockerlogin() {
+  if [ -n "$1" ]
+  then
+    docker-compose exec --user $(id -u):$(id -g) $1 /bin/bash
+  fi
+}
+
 # Install Vagrant plugins
 vagrant plugin install vagrant-cachier
 vagrant plugin install vagrant-faster
