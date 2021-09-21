@@ -71,7 +71,7 @@ alias dcb="docker-compose build"
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
 alias dcl="docker-compose exec --user $(id -u):$(id -g) web /bin/bash"
-alias dcdebug="docker-compose down && docker-compose run --service-ports we>
+alias dcdebug="docker-compose down && docker-compose run --service-ports web"
 alias dclc="dockerlogin"
 dockerlogin() {
   if [ -n "$1" ]
