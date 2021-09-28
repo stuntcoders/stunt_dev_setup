@@ -72,7 +72,7 @@ alias dcd="docker-compose down"
 alias dcl="docker-compose exec --user $(id -u):$(id -g) web /bin/bash"
 alias dcdebug="docker-compose down && docker-compose run --service-ports web"
 alias dclc="dockerlogin"
-alias wp="docker_wpcli"
+alias dwp="docker_wpcli"
 
 docker_wpcli() {
   declare ARGS
