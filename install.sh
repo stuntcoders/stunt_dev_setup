@@ -64,7 +64,6 @@ alias vup='vagrant up'
 alias vd='vagrant suspend'
 alias vssh='vagrant ssh'
 
-
 # Docker
 alias docker-compose="docker compose"
 alias dcb="docker-compose build"
@@ -73,6 +72,44 @@ alias dcd="docker-compose down"
 alias dcl="docker-compose exec --user $(id -u):$(id -g) web /bin/bash"
 alias dcdebug="docker-compose down && docker-compose run --service-ports web"
 alias dclc="dockerlogin"
+alias dwp="docker_wpcli"
+
+docker_wpcli() {
+  declare ARGS
+
+  # if CWD is not WordPress project, exit
+  if ! [[ -d ./wp-includes && -d ./wp-admin && -d ./wp-content ]]; then
+    echo 'Not in WordPress project.'
+    return 1
+  fi
+
+  # If WordPress and DB are not running, exit
+  CWD=${PWD##*/}
+  CONTAINERS_ACTIVE=$(docker ps | grep $CWD |  wc -l)
+
+   if [ $CONTAINERS_ACTIVE -lt 2 ]; then
+    echo 'Start WordPress and Database containers first.'
+    return 1
+  fi
+
+  # if container already exists, recreate it
+  COUNT=$(docker ps -a | grep wp_cli | wc -l)
+
+  if [ $COUNT -gt 0 ]; then
+    echo Recreating wp_cli container..
+    docker rm wp_cli
+  fi
+
+  # If no arguments are passed, display wp info
+  if [ $# -eq 0 ]; then
+    ARGS="--info"
+  else
+    ARGS=("$@")
+  fi
+
+  docker-compose run --name wp_cli --rm wp_cli "${ARGS[@]}"
+}
+
 dockerlogin() {
   if [ -n "$1" ]
   then
