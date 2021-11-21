@@ -4,10 +4,13 @@ xcode-select --install
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-brew install homebrew/cask
-
 brew tap homebrew/bundle
 brew bundle
+
+# Install font
+brew tap homebrew/cask-fonts
+brew install svn
+brew install font-source-code-pro
 
 # Remove apps from Dock
 dockutil --remove 'Launchpad' --allhomes
