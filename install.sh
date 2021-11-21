@@ -7,10 +7,11 @@ xcode-select --install
 brew tap homebrew/bundle
 brew bundle
 
-# Install font
+# Install font & get iterm color presets
 brew tap homebrew/cask-fonts
 brew install svn
 brew install font-source-code-pro
+wget https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors
 
 # Remove apps from Dock
 dockutil --remove 'Launchpad' --allhomes
