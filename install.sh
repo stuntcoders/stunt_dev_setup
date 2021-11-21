@@ -60,7 +60,7 @@ chmod 755 /usr/local/share/zsh/site-functions
 # Add aliases
 cat <<EOT >> ~/.zshrc
 # Homebrew
-alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update && brew upgrade && brew cleanup'
 
 # Vagrant
 alias vup='vagrant up'
