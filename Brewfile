@@ -37,9 +37,5 @@ cask 'tableplus'
 cask 'libreoffice'
 cask 'mattermost'
 
-# Fonts
-cask 'font-source-code-pro'
-
 # IDEs
 cask 'sublime-text'
-cask 'visual-studio-code'
