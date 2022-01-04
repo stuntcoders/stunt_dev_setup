@@ -131,6 +131,9 @@ alias fpd='fab production deploy'
 # Terminal
 alias cat='bat'
 alias l='exa --long --header -g -a --classify'
+
+# Ruby
+alias be="bundle exec"
 EOT
 
 # Fix zsh Insecure completion-dependent directories issues
