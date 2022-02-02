@@ -62,11 +62,6 @@ cat <<EOT >> ~/.zshrc
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup'
 
-# Vagrant
-alias vup='vagrant up'
-alias vd='vagrant suspend'
-alias vssh='vagrant ssh'
-
 # Docker
 alias docker-compose="docker compose"
 alias dcb="docker-compose build"
