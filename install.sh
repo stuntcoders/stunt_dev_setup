@@ -125,6 +125,10 @@ alias l='exa --long --header -g -a --classify'
 
 # Ruby
 alias be="bundle exec"
+
+# Python
+alias python=/usr/local/bin/python3"
+
 EOT
 
 # Fix zsh Insecure completion-dependent directories issues
