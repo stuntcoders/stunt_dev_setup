@@ -120,10 +120,6 @@ dockerlogin() {
   fi
 }
 
-# Install Vagrant plugins
-vagrant plugin install vagrant-cachier
-vagrant plugin install vagrant-faster
-
 # Fabric
 alias fsd='fab staging deploy'
 alias fpd='fab production deploy'
