@@ -137,8 +137,6 @@ chmod 755 /usr/local/share/zsh/site-functions
 
 # Local files, folders and scripts setup
 mkdir ~/Sites/
-sudo easy_install pip
-pip install -Iv fabric==1.14.1
 
 # Rbenv
 brew install rbenv
