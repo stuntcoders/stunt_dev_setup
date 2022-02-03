@@ -127,7 +127,8 @@ alias l='exa --long --header -g -a --classify'
 alias be="bundle exec"
 
 # Python
-alias python=/usr/local/bin/python3"
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
 
 EOT
 
