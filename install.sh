@@ -146,3 +146,6 @@ rbenv global 2.7.1
 
 # Install Capistrano
 gem install capistrano
+
+# Python
+pip install black
