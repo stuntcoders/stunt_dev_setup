@@ -57,8 +57,23 @@ sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 chmod 755 /usr/local/share/zsh
 chmod 755 /usr/local/share/zsh/site-functions
 
-# Add aliases
+# Install Powerline
+mkdir -p ~/powerline
+git clone git@github.com:carlcarl/powerline-zsh ~/powerline
+ln -s ~/powerline/powerline-zsh.py ~/powerline-zsh.py
+
+# Modify ~/.zshrc
 cat <<EOT >> ~/.zshrc
+# Powerline
+function _update_ps1()
+{
+    export PROMPT="$(~/powerline-zsh.py $?)"
+}
+precmd()
+{
+    _update_ps1
+}
+
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup'
 
