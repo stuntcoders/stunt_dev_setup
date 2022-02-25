@@ -160,3 +160,4 @@ gem install capistrano
 
 # Python
 pip install black
+pip install pylint
