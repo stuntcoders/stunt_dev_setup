@@ -7,7 +7,7 @@ cd stunt_dev_setup
 bash install.sh
 ```
 
-# Manuly required actions
+# Manually required actions
 
 Open iTerm preferences:
 1. Go to Profiles > Text > Font, choose: `Source Code Pro`;
