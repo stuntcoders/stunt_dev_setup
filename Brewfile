@@ -38,5 +38,9 @@ cask 'tableplus'
 cask 'libreoffice'
 cask 'mattermost'
 
+# Databases
+brew 'mysql'
+brew 'postgres'
+
 # IDEs
 cask 'sublime-text'
