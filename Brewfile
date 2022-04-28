@@ -23,7 +23,7 @@ brew 'exa'
 
 # Basics
 cask 'virtualbox'
-cask 'python'
+cask 'python3'
 cask 'google-chrome'
 cask 'firefox'
 
