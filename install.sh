@@ -7,11 +7,10 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew tap homebrew/bundle
+brew tap homebrew/cask-fonts 
 brew bundle
 
 # Install font & get iterm color presets
-brew tap homebrew/cask-fonts
-brew install svn
 brew install font-source-code-pro
 wget https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors
 
