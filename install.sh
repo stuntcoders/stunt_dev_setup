@@ -7,7 +7,8 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew tap homebrew/bundle
-brew tap homebrew/cask-fonts 
+brew tap homebrew/cask-fonts
+brew install svn
 brew bundle
 
 # Install font & get iterm color presets
