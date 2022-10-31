@@ -10,6 +10,7 @@ brew tap homebrew/bundle
 brew tap homebrew/cask-fonts
 brew install svn
 brew install pre-commit
+brew install asdf
 brew bundle
 
 # Install font & get iterm color presets
@@ -63,6 +64,12 @@ ln -s ~/powerline/powerline-zsh.py ~/powerline-zsh.py
 
 # Modify ~/.zshrc
 cat <<EOT >> ~/.zshrc
+echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/dj/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dj/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # Powerline
 function _update_ps1()
 {
