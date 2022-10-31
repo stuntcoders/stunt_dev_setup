@@ -9,6 +9,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew tap homebrew/bundle
 brew tap homebrew/cask-fonts
 brew install svn
+brew install pre-commit
 brew bundle
 
 # Install font & get iterm color presets
