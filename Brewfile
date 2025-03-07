@@ -21,6 +21,7 @@ brew 'svn'
 brew 'python@3'
 cask 'google-chrome'
 cask 'firefox'
+brew 'wp-cli'
 
 # Utility
 cask 'iterm2'
