@@ -27,3 +27,16 @@ tell application "iTerm"
                 delay 1
                 click button "Color Presets…" of group 1 of window 1
                 delay 1
+                click menu item "Import…" of menu 1 of button "Color Presets…" of group 1 of window 1
+                delay 1
+                keystroke "~/.iterm2_profile/Ayu Mirage.itermcolors"
+                delay 1
+                keystroke return
+            end tell
+        end tell
+
+        -- Set window size to 200x50
+        set number of columns to 200
+        set number of rows to 50
+    end tell
+end tell
