@@ -73,7 +73,7 @@ pip install --user black pylint
 mkdir -p ~/.iterm2_profile && wget -O ~/.iterm2_profile/Ayu\ Mirage.itermcolors "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
 
 # Run AppleScript to apply iTerm2 settings
-osascript "$(dirname "$0")/iterm2-setup.applescript"
+osascript iterm2-setup.applescript
 
 # Modify ~/.zshrc with aliases and settings
 cat <<EOT >> ~/.zshrc
