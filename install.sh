@@ -7,15 +7,13 @@ else
   echo "Xcode Command Line Tools already installed."
 fi
 
-# Install Homebrew if not installed
-if ! command -v brew &>/dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install all software from Brewfile
-brew bundle install --file=~/Brewfile
+brew bundle install
 
 # Remove default macOS apps from Dock
 dockutil --remove 'Launchpad' --allhomes
