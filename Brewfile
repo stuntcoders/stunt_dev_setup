@@ -1,11 +1,9 @@
-cask_args appdir: '/Applications'
-
 tap 'homebrew/bundle'
 tap 'homebrew/services'
+tap 'homebrew/cask-fonts'
 
 brew 'wget'
 brew 'node'
-brew 'npm'
 brew 'vim'
 brew 'git'
 brew 'git-flow'
@@ -13,14 +11,15 @@ brew 'pre-commit'
 brew 'imagemagick'
 brew 'tmux'
 brew 'ruby-build'
-brew 'rbenv'
+brew 'asdf'
 brew 'zsh'
 brew 'dockutil'
 brew 'bat'
-brew 'exa'
+brew 'eza'
+brew 'svn'
 
 # Basics
-cask 'python3'
+brew 'python@3'
 cask 'google-chrome'
 cask 'firefox'
 
@@ -29,14 +28,16 @@ cask 'iterm2'
 cask 'the-unarchiver'
 
 # Apps
-cask 'gimp'
-cask 'skitch'
 cask 'tableplus'
 cask 'mattermost'
 
 # Databases
 brew 'mysql'
-brew 'postgres'
+brew 'postgresql'
 
 # IDEs
 cask 'sublime-text'
+cask 'visual-studio-code'
+
+# Fonts
+cask 'font-source-code-pro'
