@@ -30,6 +30,11 @@ dockutil --remove 'App Store' --allhomes
 dockutil --remove 'System Preferences' --allhomes
 dockutil --remove 'Podcasts' --allhomes
 dockutil --remove 'TV' --allhomes
+dockutil --remove 'Keynote' --allhomes
+dockutil --remove 'Music' --allhomes
+dockutil --remove 'Freeform' --allhomes
+dockutil --remove 'Numbers' --allhomes
+dockutil --remove 'Pages' --allhomes
 
 # Add preferred apps to Dock
 dockutil --add '/Applications/Mattermost.app' --position 1 --allhomes
