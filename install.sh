@@ -1,23 +1,23 @@
 #!/bin/bash
 
-xcode-select --install
+# Install Xcode Command Line Tools if not installed
+if ! xcode-select -p &>/dev/null; then
+  xcode-select --install
+else
+  echo "Xcode Command Line Tools already installed."
+fi
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Install Homebrew if not installed
+if ! command -v brew &>/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-brew tap homebrew/bundle
-brew tap homebrew/cask-fonts
-brew install svn
-brew install pre-commit
-brew install asdf
-brew bundle
+# Install all software from Brewfile
+brew bundle install --file=~/Brewfile
 
-# Install font & get iterm color presets
-brew install font-source-code-pro
-wget https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors
-
-# Remove apps from Dock
+# Remove default macOS apps from Dock
 dockutil --remove 'Launchpad' --allhomes
 dockutil --remove 'Siri' --allhomes
 dockutil --remove 'Safari' --allhomes
@@ -28,146 +28,102 @@ dockutil --remove 'Maps' --allhomes
 dockutil --remove 'Photos' --allhomes
 dockutil --remove 'Messages' --allhomes
 dockutil --remove 'FaceTime' --allhomes
-dockutil --remove 'iTunes' --allhomes
-dockutil --remove 'iBooks' --allhomes
 dockutil --remove 'App Store' --allhomes
 dockutil --remove 'System Preferences' --allhomes
-dockutil --remove 'Keynote' --allhomes
-dockutil --remove 'Pages' --allhomes
-dockutil --remove 'Numbers' --allhomes
 dockutil --remove 'Podcasts' --allhomes
 dockutil --remove 'TV' --allhomes
 
-# Add apps to Dock
+# Add preferred apps to Dock
 dockutil --add '/Applications/Mattermost.app' --position 1 --allhomes
 dockutil --add '/Applications/Google Chrome.app' --position 2 --allhomes
 dockutil --add '/Applications/Sublime Text.app' --position 3 --allhomes
-dockutil --add '/Applications/iTerm.app' --position 4 --allhomes
+dockutil --add '/Applications/iTerm2.app' --position 4 --allhomes
 
 # Install Grunt and Sass
 npm install --global grunt-cli
-sudo gem install sass
+gem install sass --user-install
 
-# Install yadr
-sh -c "`curl -fsSL https://raw.githubusercontent.com/skwp/dotfiles/master/install.sh`"
-cd ~/.yadr/ && rake update
-sed -i '' -e 's/skwp/agnoster/g' ~/.yadr/zsh/theme.zsh
+# Install oh-my-zsh if not installed
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+fi
 
-# Install theme
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# Set ZSH theme to agnoster
 sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 
-# Install Powerline
-mkdir -p ~/powerline
-git clone git@github.com:carlcarl/powerline-zsh ~/powerline
-ln -s ~/powerline/powerline-zsh.py ~/powerline-zsh.py
+# Fix insecure zsh directories
+compaudit | xargs chmod g-w,o-w
 
-# Modify ~/.zshrc
+# Install Powerline if not installed
+if [ ! -d "$HOME/powerline" ]; then
+  git clone git@github.com:carlcarl/powerline-zsh ~/powerline
+  ln -s ~/powerline/powerline-zsh.py ~/powerline-zsh.py
+fi
+
+# Local folder setup
+mkdir -p ~/Sites/
+
+# Install Python tools
+pip install --user black pylint
+
+# Modify ~/.zshrc with aliases and settings
 cat <<EOT >> ~/.zshrc
-echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/dj/.zprofile
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dj/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Load Homebrew
+eval "\$(/opt/homebrew/bin/brew shellenv)"
+
+# Load asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # Powerline
-function _update_ps1()
-{
-    export PROMPT="$(~/powerline-zsh.py $?)"
+function _update_ps1() {
+  export PROMPT="\$(~/powerline-zsh.py \$?)"
 }
-precmd()
-{
-    _update_ps1
+precmd() {
+  _update_ps1
 }
 
-# Homebrew
+# Homebrew Alias
 alias brewu='brew update && brew upgrade && brew cleanup'
 
-# Docker
+# Docker Aliases
 alias docker-compose="docker compose"
 alias dcb="docker-compose build"
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
-alias dcl="docker-compose exec --user $(id -u):$(id -g) web /bin/bash"
+alias dcl="docker-compose exec --user \$(id -u):\$(id -g) web /bin/bash"
 alias dcdebug="docker-compose down && docker-compose run --service-ports web"
 alias dclc="dockerlogin"
 alias dwp="docker_wpcli"
 
 docker_wpcli() {
-  declare ARGS
-
-  # if CWD is not WordPress project, exit
   if ! [[ -d ./wp-includes && -d ./wp-admin && -d ./wp-content ]]; then
     echo 'Not in WordPress project.'
     return 1
   fi
 
-  # If WordPress and DB are not running, exit
-  CWD=${PWD##*/}
-  CONTAINERS_ACTIVE=$(docker ps | grep $CWD |  wc -l)
-
-   if [ $CONTAINERS_ACTIVE -lt 2 ]; then
+  CONTAINERS_ACTIVE=\$(docker ps | grep \${PWD##*/} | wc -l)
+  if [ \$CONTAINERS_ACTIVE -lt 2 ]; then
     echo 'Start WordPress and Database containers first.'
     return 1
   fi
 
-  # if container already exists, recreate it
-  COUNT=$(docker ps -a | grep wp_cli | wc -l)
-
-  if [ $COUNT -gt 0 ]; then
-    echo Recreating wp_cli container..
+  COUNT=\$(docker ps -a | grep wp_cli | wc -l)
+  if [ \$COUNT -gt 0 ]; then
+    echo 'Recreating wp_cli container...'
     docker rm wp_cli
   fi
 
-  # If no arguments are passed, display wp info
-  if [ $# -eq 0 ]; then
-    ARGS="--info"
-  else
-    ARGS=("$@")
-  fi
-
-  docker-compose run --name wp_cli --rm wp_cli "${ARGS[@]}"
+  ARGS="\${@:-"--info"}"
+  docker-compose run --name wp_cli --rm wp_cli "\$ARGS"
 }
 
-dockerlogin() {
-  if [ -n "$1" ]
-  then
-    docker-compose exec --user $(id -u):$(id -g) $1 /bin/bash
-  fi
-}
-
-# Fabric
-alias fsd='fab staging deploy'
-alias fpd='fab production deploy'
-
-# Terminal
+# Terminal Aliases
 alias cat='bat'
-alias l='exa --long --header -g -a --classify'
-
-# Ruby
-alias be="bundle exec"
+alias l='eza --long --header -g -a --classify'
 
 # Python
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
+alias python=\$(which python3)
+alias pip=\$(which pip3)
 
 EOT
-
-# Fix zsh Insecure completion-dependent directories issues
-chmod 755 /usr/local/share/zsh
-chmod 755 /usr/local/share/zsh/site-functions
-
-# Local files, folders and scripts setup
-mkdir ~/Sites/
-
-# Rbenv
-brew install rbenv
-rbenv install 2.7.1
-rbenv global 2.7.1
-
-# Install Capistrano
-gem install capistrano
-
-# Python
-pip install black
-pip install pylint
