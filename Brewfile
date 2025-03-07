@@ -22,6 +22,8 @@ brew 'python@3'
 cask 'google-chrome'
 cask 'firefox'
 brew 'wp-cli'
+cask 'local'
+cask 'docker'
 
 # Utility
 cask 'iterm2'
