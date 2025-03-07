@@ -37,7 +37,7 @@ dockutil --remove 'TV' --allhomes
 dockutil --add '/Applications/Mattermost.app' --position 1 --allhomes
 dockutil --add '/Applications/Google Chrome.app' --position 2 --allhomes
 dockutil --add '/Applications/Sublime Text.app' --position 3 --allhomes
-dockutil --add '/Applications/iTerm2.app' --position 4 --allhomes
+dockutil --add '/Applications/iTerm.app' --position 4 --allhomes
 
 # Install Grunt and Sass
 npm install --global grunt-cli
