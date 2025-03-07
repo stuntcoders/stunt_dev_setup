@@ -69,14 +69,8 @@ mkdir -p ~/Sites/
 # Install Python tools
 pip install --user black pylint
 
-# Create profile directory and download color scheme if not already present
-ITERM_PROFILE_DIR="$HOME/.iterm2_profile"
-mkdir -p "$ITERM_PROFILE_DIR"
-COLOR_SCHEME="$ITERM_PROFILE_DIR/Ayu Mirage.itermcolors"
-
-if [ ! -f "$COLOR_SCHEME" ]; then
-  wget -O "$COLOR_SCHEME" "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
-fi
+# Create profile directory and download color scheme
+mkdir -p ~/.iterm2_profile && wget -O ~/.iterm2_profile/Ayu\ Mirage.itermcolors "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
 
 # Run AppleScript to apply iTerm2 settings
 osascript "$(dirname "$0")/iterm2-setup.applescript"
