@@ -10,7 +10,4 @@ bash install.sh
 
 # Manually required actions
 
-Open iTerm preferences:
-1. Go to Profiles > Text > Font, choose: `Source Code Pro`;
-2. Go to Profiles > Colors > Color Presets..., choose: "Import", and import `Ayu Mirage` from home folder;
-3. Go to Profiles > Window, set columns to: 200, rows: 50
+Open iTerm > Preferences > Profiles > Window, then set columns to: 200, and rows to: 50.
