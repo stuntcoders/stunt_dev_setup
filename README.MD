@@ -4,6 +4,7 @@ On the newly installed Mac OS, run the following commands:
 ```
 git clone git@github.com:stuntcoders/stunt_dev_setup.git
 cd stunt_dev_setup
+xcode-select --install
 bash install.sh
 ```
 
