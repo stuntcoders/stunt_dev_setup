@@ -44,20 +44,15 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 fi
 
-# Set ZSH theme to agnoster
-sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
-
 # Fix insecure zsh directories
 compaudit | xargs chmod g-w,o-w
 
 # Install Powerline
-wget -O ~/powerline-zsh.py https://raw.githubusercontent.com/carlcarl/powerline-zsh/refs/heads/master/powerline-zsh.py
+brew install powerlevel10k
+echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
 # Local folder setup
 mkdir -p ~/Sites/
-
-# Create profile directory and download color scheme
-wget -O ~/Ayu\ Mirage.itermcolors "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
 
 # Modify ~/.zshrc with aliases and settings
 cat <<EOT >> ~/.zshrc
@@ -67,14 +62,6 @@ eval "\$(/opt/homebrew/bin/brew shellenv)"
 
 # Load asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-# Powerline
-function _update_ps1() {
-  export PROMPT="\$(~/powerline-zsh.py \$?)"
-}
-precmd() {
-  _update_ps1
-}
 
 # Homebrew Alias
 alias brewu='brew update && brew upgrade && brew cleanup'
