@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Install Xcode Command Line Tools if not installed
-if ! xcode-select -p &>/dev/null; then
-  xcode-select --install
-else
-  echo "Xcode Command Line Tools already installed."
-fi
-
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
@@ -57,23 +50,14 @@ sed -i '' -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
 # Fix insecure zsh directories
 compaudit | xargs chmod g-w,o-w
 
-# Install Powerline if not installed
-if [ ! -d "$HOME/powerline" ]; then
-  git clone git@github.com:carlcarl/powerline-zsh ~/powerline
-  ln -s ~/powerline/powerline-zsh.py ~/powerline-zsh.py
-fi
+# Install Powerline
+wget -O ~/powerline-zsh.py https://raw.githubusercontent.com/carlcarl/powerline-zsh/refs/heads/master/powerline-zsh.py
 
 # Local folder setup
 mkdir -p ~/Sites/
 
-# Install Python tools
-pip install --user black pylint
-
 # Create profile directory and download color scheme
-mkdir -p ~/.iterm2_profile && wget -O ~/.iterm2_profile/Ayu\ Mirage.itermcolors "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
-
-# Run AppleScript to apply iTerm2 settings
-osascript iterm2-setup.applescript
+wget -O ~/Ayu\ Mirage.itermcolors "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Ayu%20Mirage.itermcolors"
 
 # Modify ~/.zshrc with aliases and settings
 cat <<EOT >> ~/.zshrc
@@ -136,3 +120,8 @@ alias python=\$(which python3)
 alias pip=\$(which pip3)
 
 EOT
+
+source ~/.zshrc
+
+# Install Python tools
+pip install --user black pylint
